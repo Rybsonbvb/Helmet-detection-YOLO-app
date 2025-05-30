@@ -1,0 +1,7 @@
+path: \data
+train: \data\train
+val: \data\val
+
+nc: 4
+
+names: ["with helmet", "without helmet", "rider", "number plate"]
