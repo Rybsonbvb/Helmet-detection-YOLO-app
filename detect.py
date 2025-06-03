@@ -53,7 +53,10 @@ def extract_license_plates(img: np.ndarray, boxes: np.ndarray, classes: np.ndarr
 
     for (x1, y1, x2, y2) in matched_boxes:
         cropped = img[y1:y2, x1:x2]
-        results = ocr_reader.readtext(cropped)
+        cropped = cv2.resize(cropped, None, fx=2.0, fy=2.0, interpolation=cv2.INTER_CUBIC)
+        gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
+        enhanced = cv2.equalizeHist(gray)  # poprawia kontrast
+        results = ocr_reader.readtext(enhanced,allowlist='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
         if results:
             best = max(results, key=lambda r: r[2])
             texts.append(best[1])
