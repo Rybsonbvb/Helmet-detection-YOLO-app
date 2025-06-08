@@ -1,0 +1,5 @@
+
+train: /kaggle/input/rider-with-helmet-without-helmet-number-plate/train
+val: /kaggle/input/rider-with-helmet-without-helmet-number-plate/val
+nc: 4
+names: ['with helmet','without helmet','rider','number plate']
